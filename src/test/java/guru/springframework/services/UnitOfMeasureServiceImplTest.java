@@ -44,7 +44,7 @@ public class UnitOfMeasureServiceImplTest {
         uom2.setId("2");
         unitOfMeasures.add(uom2);
 
-        when(unitOfMeasureReactiveRepository.findAll()).thenReturn(Flux.just(uom1,uom2));
+        when(unitOfMeasureReactiveRepository.findAll()).thenReturn(Flux.just(uom1, uom2));
 
         //when
         List<UnitOfMeasureCommand> commands = service.listAllUoms().collectList().block();
