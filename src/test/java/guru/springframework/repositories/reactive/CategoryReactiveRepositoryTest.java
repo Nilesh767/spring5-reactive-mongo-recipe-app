@@ -13,7 +13,7 @@ import static org.junit.Assert.assertNotNull;
 
 @RunWith(SpringRunner.class)
 @DataMongoTest
-public class CategoryReactiveRepositoryIT {
+public class CategoryReactiveRepositoryTest {
 
     @Autowired
     CategoryReactiveRepository categoryReactiveRepository;
