@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * Created by jt on 7/3/17.
+ */
 @Controller
 public class ImageController {
 
@@ -30,7 +33,9 @@ public class ImageController {
 
     @PostMapping("recipe/{id}/image")
     public String handleImagePost(@PathVariable String id, @RequestParam("imagefile") MultipartFile file){
+
         imageService.saveImageFile(id, file).block();
+
         return "redirect:/recipe/" + id + "/show";
     }
 

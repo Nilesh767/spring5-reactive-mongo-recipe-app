@@ -3,16 +3,11 @@ package guru.springframework.controllers;
 import guru.springframework.domain.Recipe;
 import guru.springframework.services.RecipeService;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Import;
-import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.test.web.reactive.server.WebTestClient;
+import org.mockito.MockitoAnnotations;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.ui.Model;
@@ -31,15 +26,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by jt on 6/17/17.
  */
-@RunWith(SpringRunner.class)
-@WebFluxTest
-@Import(IndexController.class)
+@Ignore
 public class IndexControllerTest {
-
-    WebTestClient webTestClient;
-
-    @Autowired
-    ApplicationContext applicationContext;
 
     @Mock
     RecipeService recipeService;
@@ -47,12 +35,13 @@ public class IndexControllerTest {
     @Mock
     Model model;
 
-    @Autowired
     IndexController controller;
 
     @Before
     public void setUp() throws Exception {
-        webTestClient = WebTestClient.bindToController(controller).build();
+        MockitoAnnotations.initMocks(this);
+
+        controller = new IndexController(recipeService);
     }
 
     @Test
